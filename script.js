@@ -1,21 +1,22 @@
 //Twitch API Processing
 $(document).ready(function() {
     // API query parameters
-    var parms = ;
+    // var parms = "/users/ESL_SC2";
+    var parms = "/channels/esl_sc2";
     console.log(parms);
 
-    // Full API URL
-    var url = " "
-        + parms + "&callback=?"
-    console.log(url);
+    // Full API endpoint
+    var endpoint = "https://wind-bow.gomix.me/twitch-api"
+        + parms + "?callback=?";
+    console.log(endpoint);
 
     // Execute Twitch.tv API call and download data
-    $.getJSON(url, function(data) {
+    $.getJSON(endpoint, function(data) {
         //Validate api data
         console.log(data);
 
     // Inject query results and article links to page
-    $('#twitchtv_results').text(data);
+    $('#twitchtv_results').html(data);
 
     }); // Ends getJSON function
 
