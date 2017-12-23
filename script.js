@@ -1,8 +1,9 @@
 //Twitch API Processing
 $(document).ready(function() {
     // API query parameters
-    // var parms = "/users/ESL_SC2";
-    var parms = "/channels/esl_sc2";
+    var channel = "freecodecamp"
+    console.log(channel)
+    var parms = "/channels/"+channel;
     console.log(parms);
 
     // Full API endpoint
@@ -15,8 +16,19 @@ $(document).ready(function() {
         //Validate api data
         console.log(data);
 
-    // Inject query results and article links to page
-    $('#twitchtv_results').html(data);
+        // Parse query results
+        var logo = data["logo"];
+        console.log(logo);
+        var channel_name = data["display_name"];
+        console.log(channel_name);
+        var status = data["status"];
+        console.log(status)
+        var channel_url = data["url"];
+        console.log(channel_url);
+
+        // Inject query results and article links to page
+        $('#twitchtv_results').html('<div>' + '<img src="' + logo +'" height="75" width="75">' + '</div>');
+        // $('img').attr('src', logo);
 
     }); // Ends getJSON function
 
