@@ -36,10 +36,10 @@ $(document).ready(function() {
         var channel_url = data["url"];
         console.log(channel_url);
 
-        // Inject query results and article links to page
+        // Inject query results and hyperlink to channel page
         $('#twitchtv_results').html('<h1>Twitch.tv</h1>')
         $('#logo').html('<img src="' + logo +'" height="50" width="50">');
-        $('#display_name').html(display_name);
+        $('#display_name').html('<a href="' + channel_url + '" target="_blank">' + display_name + '</a>');
 
         // Identify whether user live streaming
         $.getJSON(endpoint_streams, function(stream_data) {
