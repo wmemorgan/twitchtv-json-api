@@ -1,4 +1,16 @@
-div {
-    text-align: center;
-    border: 1px solid black;
+.container {
+   display: grid;
+   grid-template-columns: 1fr 1fr 2fr
+}
+
+.header {
+    grid-column: 1 / -1;
+}
+
+.user {
+    grid-column: 1 / 1;
+}
+
+.status {
+    grid-column: 2 / 1;
 }
