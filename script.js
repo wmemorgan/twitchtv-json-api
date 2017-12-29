@@ -65,6 +65,16 @@ $(document).ready(function() {
             var channel_url = data["url"];
             // console.log(channel_url);
             
+            $('.logo').append('<img src="' + logo + '" height="50" width="50">' 
+                            //  + ' ' 
+                            //  + display_name
+                            //  + ' '
+                            //  + status 
+                             + '<br>'
+                            );
+            $('.username').append(display_name + '<br>');
+            $('.status').append(status + '<br>');
+
             // $('#twitchtv_results').append('<div class="row">'
             //     + '<div class="col-lg-3 col-sm-6 boxy current_status" id="logo">'
             //     + '<img src="' + logo + '" height="50" width="50">' + '</div>'

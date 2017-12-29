@@ -1,16 +1,49 @@
-.container {
+.css_grid_container {
    display: grid;
-   grid-template-columns: 1fr 1fr 2fr
+   grid-template-columns: 1fr 1fr 1fr 2fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   height: 50%;
+   padding: 10px;
+   margin: 10px;
+   /* justify-content: space-evenly;
+   align-content: center; */
+   /* justify-items: center;
+   align-items: center; */
+   border: 1px solid black;
+   
 }
 
 .header {
-    grid-column: 1 / -1;
+    grid-column: 1 / 4;
+    grid-row: 1 / 1;
+    justify-self: center;
+    border: 1px solid black;
+    padding: 1px;
 }
 
-.user {
-    grid-column: 1 / 1;
+.logo {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    justify-self: right;
+    align-self: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.username {
+    grid-column: 2 / 2;
+    grid-row: 2;
+    justify-self: left;
+    align-self: center;
+    border: 1px solid black;
+    padding: 10px;
 }
 
 .status {
-    grid-column: 2 / 1;
+    grid-column: 3 / 3;
+    grid-row: 2;
+    justify-self: left;
+    align-self: center;
+    border: 1px solid black;
+    padding: 10px;
 }
