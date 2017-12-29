@@ -3,12 +3,15 @@
 }
 
 .grid {
+    max-width: 700px;
+    margin: 0 auto;
     display: grid;
-    /* grid-template-columns: repeat(3, auto); */
-    grid-template-columns: auto 130px auto;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: auto 1fr auto;
+    grid-auto-rows: 1fr;
     /* padding: 5x;
     margin: 20px; */
-    /* grid-gap: 5px; */
+    grid-gap: 2px;
     justify-content: center;
     align-items: center;
     
@@ -27,7 +30,6 @@
 
 .logo {
     grid-column: 1 / 1;
-    
     
     
 }
