@@ -55,7 +55,7 @@ $(document).ready(function() {
             // console.log(display_name);
             var game = data["game"];
             // console.log(game);
-            var status = data["status"];
+            var preview = data["status"];
             // console.log(status)
             var channel_url = data["url"];
             // console.log(channel_url);
@@ -64,7 +64,7 @@ $(document).ready(function() {
                              + ' ' 
                              + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
                              + ' '
-                             +status
+                             +preview
                             + '</div>'
                             //  + '<br>'
                             );
