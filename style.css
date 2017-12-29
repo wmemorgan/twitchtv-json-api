@@ -4,14 +4,43 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr;
-    /* padding: 3px; */
-    margin: 20px;
+    /* grid-template-columns: repeat(3, auto); */
+    grid-template-columns: auto 130px auto;
+    /* padding: 5x;
+    margin: 20px; */
+    /* grid-gap: 5px; */
+    justify-content: center;
+    align-items: center;
     
 }
 
-.twitchtv_results {
+.grid > div {
+
     border: 1px solid black;
+    padding: 3px;
+
+}
+
+.header {
+        grid-column: 1 / -1;
+}
+
+.logo {
+    grid-column: 1 / 1;
+    
+    
+    
+}
+
+.display_name {
+    grid-column: 2 / 2;
+    justify-self: center;
+   
+}
+
+.preview {
+    grid-column: 3 / 3;
+    
 }
 
 /* .grid div:nth-child(even) {

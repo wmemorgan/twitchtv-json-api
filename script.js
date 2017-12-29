@@ -60,16 +60,18 @@ $(document).ready(function() {
             var channel_url = data["url"];
             // console.log(channel_url);
             
-            $('.grid').append('<div class="twitchtv_results">' + '<img src="' + logo + '" height="50" width="50">' 
-                             + ' ' 
-                             + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
-                             + ' '
-                             +preview
+            $('.grid').append('<div class="logo">' + '<img src="' + logo + '" height="50" width="50">' 
+                            //  + ' ' 
+                            //  + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
+                            //  + ' '
+                            //  +preview
                             + '</div>'
                             //  + '<br>'
                             );
-            // $('.username').append('<div class="display_name">' + display_name + '</div>');
-            // $('.status').append('<div class="status">' + status + '</div>');
+            $('.grid').append('<div class="display_name">' 
+                             + '<a href="' + channel_url + '" target="_blank">' 
+                             + display_name + '</a>'+ '</div>');
+            $('.grid').append('<div class="preview">' + preview + '</div>');
 
             // $('#twitchtv_results').append('<div class="row">'
             //     + '<div class="col-lg-3 col-sm-6 boxy current_status" id="logo">'
