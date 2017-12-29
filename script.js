@@ -41,10 +41,11 @@ $(document).ready(function() {
     // var usernames = ["freecodecamp"]
     // var category = "channels"
 
-    for (i in usernames) {
+    for (i = 0;  i < (usernames.length); i++) {
+        console.log(i, usernames[i]);
         var url = apiEndpoint(usernames[i], "channels");
         console.log(url);
-
+     
         // Execute Twitch.tv API call and download channels data        
         $.getJSON(url, function (data) {
             console.log(data);
@@ -58,37 +59,34 @@ $(document).ready(function() {
             var preview = data["status"];
             // console.log(status)
             var channel_url = data["url"];
-            // console.log(channel_url);
-            
-            $('.grid').append('<div class="logo">' + '<img src="' + logo + '" height="50" width="50">' 
-                            //  + ' ' 
-                            //  + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
-                            //  + ' '
-                            //  +preview
-                            + '</div>'
-                            //  + '<br>'
-                            );
+            console.log(channel_url);
+
+
+            $('.grid').append('<div class="logo">' + '<img src="' + logo + '" height="50" width="50">' + '</div>');
             $('.grid').append('<div class="display_name">' 
                              + '<a href="' + channel_url + '" target="_blank">' 
                              + display_name + '</a>'+ '</div>');
-            $('.grid').append('<div class="preview">' + preview + '</div>');
+            // $('.grid').append('<div class="preview">' + preview + '</div>');
 
-            // $('#twitchtv_results').append('<div class="row">'
-            //     + '<div class="col-lg-3 col-sm-6 boxy current_status" id="logo">'
-            //     + '<img src="' + logo + '" height="50" width="50">' + '</div>'
-            //     + '<div class="col-lg-3 col-sm-6 boxy current_status" id="display_name">'
-            //     + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
-            //     + '</div>');
-
-            // Identify whether user live streaming
-        //     var url2 = apiEndpoint(usernames[i], "streams");
-        //     $.getJSON(url2, function (stream_data) {
-        //         //Validate api data
-        //         console.log(stream_data);
 
         //         isOnline(stream_data, game, status);
 
-        // }); // Ends getJSON API streams data call
-     }); // Ends getJSON API channels data call 
+
+     }); // Ends getJSON API channels data call
+        // Identify whether user live streaming
+        // var url2 = apiEndpoint(usernames[i], "streams");
+        // console.log(i, url2);
+        // $.getJSON(url2, function (stream_data) {
+
+        //     //     //Validate api data
+        //     console.log(i, stream_data);
+        //     if (stream_data.stream == null) {
+        //         $('.grid').append('<div class="status">' + '<h5>Offline</h5>' + '</div>');
+        //     } else {
+        //                 var game = stream_data.stream.game;
+        //                 var preview = stream_data.stream.channel.status;
+        //             $('.grid').append('<div class="status">' + game + ': ' + preview + '</div>');
+        //     }
+        // }); // Ends getJSON API streams data call 
     } // End of for loop
 }); // Ends jQuery
