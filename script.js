@@ -36,14 +36,9 @@ function isOnline(data, game, status) {
     }
 }
 
-function displayResults(logo) {
-    $('#twitchtv_results').append('<div class="col-lg-3 col-sm-6 boxy current_status" id="display_name">'
-        + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>' + '</div>');
-}
-
-
 $(document).ready(function() {
     var usernames = ["freecodecamp", "esl_sc2", "dotastarladder_en","guit88man"]
+    // var usernames = ["freecodecamp"]
     // var category = "channels"
 
     for (i in usernames) {
@@ -65,15 +60,16 @@ $(document).ready(function() {
             var channel_url = data["url"];
             // console.log(channel_url);
             
-            $('.logo').append('<img src="' + logo + '" height="50" width="50">' 
-                            //  + ' ' 
-                            //  + display_name
-                            //  + ' '
-                            //  + status 
-                             + '<br>'
+            $('.grid').append('<div class="twitchtv_results">' + '<img src="' + logo + '" height="50" width="50">' 
+                             + ' ' 
+                             + '<a href="' + channel_url + '" target="_blank">' + display_name + '</a>'
+                             + ' '
+                             +status
+                            + '</div>'
+                            //  + '<br>'
                             );
-            $('.username').append(display_name + '<br>');
-            $('.status').append(status + '<br>');
+            // $('.username').append('<div class="display_name">' + display_name + '</div>');
+            // $('.status').append('<div class="status">' + status + '</div>');
 
             // $('#twitchtv_results').append('<div class="row">'
             //     + '<div class="col-lg-3 col-sm-6 boxy current_status" id="logo">'
@@ -83,14 +79,14 @@ $(document).ready(function() {
             //     + '</div>');
 
             // Identify whether user live streaming
-            var url2 = apiEndpoint(usernames[i], "streams");
-            $.getJSON(url2, function (stream_data) {
-                //Validate api data
-                console.log(stream_data);
+        //     var url2 = apiEndpoint(usernames[i], "streams");
+        //     $.getJSON(url2, function (stream_data) {
+        //         //Validate api data
+        //         console.log(stream_data);
 
-                isOnline(stream_data, game, status);
+        //         isOnline(stream_data, game, status);
 
-        }); // Ends getJSON API streams data call
+        // }); // Ends getJSON API streams data call
      }); // Ends getJSON API channels data call 
     } // End of for loop
 }); // Ends jQuery
