@@ -19,16 +19,6 @@ function apiData(endpoint) {
     }); // Ends getJSON API channels data call 
 }
 
-function isOnline(data, game, status) {
-    if (data.stream == null) {
-        $('.grid').append('<div class="status">' + '<h4>Offline</h4>' + '</div>');
-    } else {
-        var game = data.stream.game;
-        var preview = data.stream.channel.status;
-        $('.grid').append('<div class="status">' + game + ': ' + preview + '</div>');
-    }
-}
-
 function displayStreamInfo(data) {
     // Parse query results
     var logo = data["stream"]["channel"]["logo"];
@@ -64,9 +54,19 @@ function displayChannelInfo(data) {
                     +'<div class="display_name">'
                     + '<a href="' + channel_url + '" target="_blank">'
                     + display_name + '</a>' + '</div>'
-                    +('<div class="status">' + '<h4>Offline</h4>' + '</div>');
+                    +'<div class="status">' + '<h4>Offline</h4>' + '</div>');
 }
 
+function isOnline(endpoint) {
+   $.getJSON(endpoint, function(data){
+    if (data["stream"]==null) {
+        return true;
+    } else {
+        return false;
+    }
+   });
+    
+}
 
 $(document).ready(function() {
     var usernames = ["freecodecamp", "esl_sc2", "dotastarladder_en","guit88man"]
@@ -75,29 +75,26 @@ $(document).ready(function() {
 
     for (i = 0;  i < (usernames.length); i++) {
         console.log(i, usernames[i]);
-        var url = apiEndpoint(usernames[i], "channels");
-        console.log(url);
-     
-        // Execute Twitch.tv API call and download channels data        
-        $.getJSON(url, function (data) {
-            console.log(data);
+        
+        // Obtain endpoint URLs
+        var channel_endpoint = apiEndpoint(usernames[i], "channels");
+        console.log(i, channel_endpoint);
 
+        var stream_endpoint = apiEndpoint(usernames[i], "streams");
+        console.log(i, stream_endpoint);
 
-     }); // Ends getJSON API channels data call
         // Identify whether user live streaming
-        var url2 = apiEndpoint(usernames[i], "streams");
-        console.log(i, url2);
-        $.getJSON(url2, function (stream_data) {
+        $.getJSON(stream_endpoint, function (stream_data) {
 
-                //Validate api data
-            console.log(i, stream_data);
-
-            if (stream_data.stream == null) {
-                $('.grid').append('<div class="status">' + '<h4>Offline</h4>' + '</div>');
+            if (stream_data["stream"] == null) {
+                // Execute Twitch.tv API call and download channel data        
+                $.getJSON(channel_endpoint, function (channel_data) {
+                    console.log(i, channel_data);
+                    displayChannelInfo(channel_data)
+                }); // Ends getJSON API channels data call
             } else {
-                    var game = stream_data.stream.game;
-                    var preview = stream_data.stream.channel.status;
-                    $('.grid').append('<div class="status">' + game + ': ' + preview + '</div>');
+                console.log(i, stream_data);
+                displayStreamInfo(stream_data);
             }
         }); // Ends getJSON API streams data call 
     } // End of for loop
