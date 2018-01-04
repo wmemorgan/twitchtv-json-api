@@ -11,7 +11,7 @@
     grid-auto-rows: 1fr;
     /* padding: 5x;
     margin: 20px; */
-    grid-gap: 2px;
+    /* grid-gap: 2px; */
     justify-content: center;
     align-items: center;
     
@@ -49,6 +49,28 @@
     text-align: center;
     font-style: italic;
     grid-column: 3 / 3;
+}
+
+.online {
+    background-color: darkseagreen;
+    height: 60px;
+    
+}
+
+.online > a {
+    color: #456ba3;
+    text-decoration: none;
+}
+
+.offline {
+    background-color: #456ba3;
+    height: 60px;
+    color: rgb(110, 159, 231)
+}
+
+.offline > a {
+    color: darkseagreen;
+    text-decoration: none;
 }
 
 /* .grid div:nth-child(even) {
