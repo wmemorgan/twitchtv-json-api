@@ -3,11 +3,11 @@
 }
 
 .grid {
-    max-width: 700px;
-    margin: 0 auto;
+    /* max-width: 1000px;
+    margin: 0 auto; */
     display: grid;
     /* grid-template-columns: repeat(3, 1fr); */
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 60px 130px auto;
     grid-auto-rows: 1fr;
     /* padding: 5x;
     margin: 20px; */
@@ -43,6 +43,12 @@
 .preview {
     grid-column: 3 / 3;
     
+}
+
+.status {
+    text-align: center;
+    font-style: italic;
+    grid-column: 3 / 3;
 }
 
 /* .grid div:nth-child(even) {
