@@ -1,7 +1,4 @@
 
-
-// https://wind-bow.gomix.me/twitch-api/streams/esl_sc2
-
 function apiEndpoint(username, category) {
     // console.log(username);
     // console.log(category);
@@ -12,35 +9,14 @@ function apiEndpoint(username, category) {
     return endpoint;
 }
 
-function isOnline(endpoint) {
-    $.getJSON(endpoint, function (data) {
-        if (data["stream"] == null) {
-            return true;
-        } else {
-            return false;
-        }
-    });
-
-}
-
-
-
 function apiData(endpoint) {
-    var result = null;
-    $.ajax({
-        url: endpoint,
-        dataType: 'jsonp',
-        async: false,
-        success: function(data) {
-        result = data;
-        return result;
-        }
+    var jsonObject = $.getJSON(endpoint, function (data) {
+        console.log(data);
     });
-    
+    return jsonObject;
 }
 
 function displayStreamInfo(data) {
-    // Parse query results
     var logo = data["stream"]["channel"]["logo"];
     // console.log(logo);
     var display_name = data["stream"]["channel"]["display_name"];
@@ -55,12 +31,10 @@ function displayStreamInfo(data) {
         + '<div class="display_name">'
         + '<a href="' + channel_url + '" target="_blank">'
         + display_name + '</a>' + '</div>'
-        +'<div class="status">' + game + ': ' + preview + '</div>');
+        + '<div class="status">' + game + ': ' + preview + '</div>');
 }
 
-function displayChannelInfo(endpoint) {
-    $.getJSON(endpoint, function (data) {
-    // Parse query results
+function displayChannelInfo(data) {
     var logo = data["logo"];
     // console.log(logo);
     var display_name = data["display_name"];
@@ -72,29 +46,41 @@ function displayChannelInfo(endpoint) {
     var channel_url = data["url"];
     // console.log(channel_url);
     $('.grid').append('<div class="logo">' + '<img src="' + logo + '" height="50" width="50">' + '</div>'
-                    +'<div class="display_name">'
-                    + '<a href="' + channel_url + '" target="_blank">'
-                    + display_name + '</a>' + '</div>'
-                    +'<div class="status">' + '<h4>Offline</h4>' + '</div>');
-    });
+        + '<div class="display_name">'
+        + '<a href="' + channel_url + '" target="_blank">'
+        + display_name + '</a>' + '</div>'
+        + '<div class="status">' + '<h4>Offline</h4>' + '</div>');
 }
 
-$(document).ready(function() {
-    var usernames = ["freecodecamp", "esl_sc2", "dotastarladder_en","guit88man"]
-    // var usernames = ["freecodecamp"]
-    // var category = "channels"
+var usernames = ["freecodecamp", "esl_sc2", "dotastarladder_en", "guit88man", "jasonr"]
+// var i = 4;
 
-    // for (i = 0;  i < (usernames.length); i++) {
-    for (i in usernames) {
-        console.log(i, usernames[i]);
-        // Obtain endpoint URLs
-        var stream_endpoint = apiEndpoint(usernames[i], "streams");
-        var channel_endpoint = apiEndpoint(usernames[i], "channels");
+for (i in usernames) {
 
-        $.getJSON(stream_endpoint, function (data) {
-            console.log(data);
-        });
+var streamEndpoint = apiEndpoint(usernames[i], "streams")
+var channelEndpoint = apiEndpoint(usernames[i], "channels")
 
-    } // End of for loop
-}); // Ends jQuery
+$.when(
+    apiData(streamEndpoint),
+    apiData(channelEndpoint)
+).done(function (streamData, channelData) { // handle the data they return here
+    // do stuff with your data
+    var streamJSON = streamData[2]["responseJSON"];
+    var channelJSON = channelData[2]["responseJSON"];
+
+    if (streamData[0]["stream"] == null) {
+        console.log(channelJSON["display_name"], "is offline")
+        console.log(channelJSON);
+        displayChannelInfo(channelJSON)
+    } else {
+        console.log(streamJSON["stream"]["channel"]["display_name"], "is online")
+        console.log(streamJSON);
+        displayStreamInfo(streamJSON);
+    }
+
+});
+
+}
+
+
 
