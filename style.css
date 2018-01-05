@@ -64,23 +64,23 @@ img {
 
 .online {
     color: black;
-    background-color: darkseagreen;
+    background-color: #b8ccb1;
     height: 60px;
 }
 
 .online > a {
-    color: #456ba3;
+    color: #506382;
     text-decoration: none;
 }
 
 .offline {
-    background-color: #456ba3;
+    background-color: #506382;
     height: 60px;
-    color: rgb(110, 159, 231);
+    color: #94acd1;
 }
 
 .offline > a {
-    color: darkseagreen;
+    color: #b8ccb1;
     text-decoration: none;
 }
 
