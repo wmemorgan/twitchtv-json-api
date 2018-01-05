@@ -21,11 +21,12 @@ function displayStreamInfo(data) {
     var preview = data["stream"]["channel"]["status"];
     var channel_url = data["stream"]["channel"]["url"];
     // Display stream data
-    $('.grid').append('<div class="logo online">' + '<img src="' + logo + '" height="50" width="50">' + '</div>'
+    $('.grid').append('<div class="logo online">' + '<img src="' + logo + '">' + '</div>'
         + '<div class="display_name online">'
         + '<a href="' + channel_url + '" target="_blank">'
         + display_name + '</a>' + '</div>'
-        + '<div class="status online">' + game + ': ' + preview + '</div>');
+        + '<div class="status online">' + game + '<div class="preview">' + ': ' + preview + '</div>' + '</div>');
+        // + '<div class="status online">' + game + ': ' + preview.slice(0, 48) + '...' + '</div>');
 }
 
 function displayChannelInfo(data) {
@@ -39,10 +40,47 @@ function displayChannelInfo(data) {
         + '<div class="display_name offline">'
         + '<a href="' + channel_url + '" target="_blank">'
         + display_name + '</a>' + '</div>'
-        + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>');
+        + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>'
+    );
 }
 
-var usernames = ["freecodecamp", "esl_sc2", "test_channel", "dotastarladder_en", "guit88man", "jasonr"]
+function smallDisplayStreamInfo(data) {
+    var logo = data["stream"]["channel"]["logo"];
+    var display_name = data["stream"]["channel"]["display_name"];
+    var game = data["stream"]["channel"]["game"];
+    var preview = data["stream"]["channel"]["status"];
+    var channel_url = data["stream"]["channel"]["url"];
+    // Display stream data
+    $('.grid').append('<div class="logo online">' + '<img src="' + logo + '">' + '</div>'
+        + '<div class="display_name online">'
+        + '<a href="' + channel_url + '" target="_blank">'
+        + display_name + '</a>' + '<br>' + game + '</div>'
+        // + '<div class="status online">' + game + '<div class="preview">' + ': ' + preview + '</div>' + '</div>'
+    );
+
+}
+
+function smallDisplayChannelInfo(data) {
+    var logo = data["logo"];
+    var display_name = data["display_name"];
+    var game = data["game"];
+    var preview = data["status"];
+    var channel_url = data["url"];
+    // Display channel data
+    $('.grid').append('<div class="logo offline">' + '<img src="' + logo + '" height="50" width="50">' + '</div>'
+        + '<div class="display_name offline">'
+        + '<a href="' + channel_url + '" target="_blank">'
+        + display_name + '</a>' + '<br>' + '<h4>Offline</h4>' + '</div>'
+        // + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>'
+    );
+}
+
+
+
+// var usernames = ["freecodecamp", "esl_sc2", "test_channel", "dotastarladder_en", "guit88man", "jasonr"]
+
+var usernames = ["freecodecamp", "esl_sc2", "test_channel"]
+
 
 for (i in usernames) {
 
@@ -61,16 +99,16 @@ $.when(
     if (streamData["stream"] == null) {
         console.log(channelData["display_name"], "is offline")
         console.log(channelData);
-        displayChannelInfo(channelData)
+        displayChannelInfo(channelData);
     } else {
         console.log(streamData["stream"]["channel"]["display_name"], "is online")
         console.log(streamData);
+
         displayStreamInfo(streamData);
     }
 
-});
+}); // End .done function
 
-}
-
+} // End for loop
 
 
