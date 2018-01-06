@@ -1,4 +1,6 @@
 
+$(document).ready(function () {
+
 function apiEndpoint(username, category) {
     // Declare API endpoints
     var endpoint = "https://wind-bow.gomix.me/twitch-api/"
@@ -42,6 +44,25 @@ function displayChannelInfo(data) {
         + display_name + '</a>' + '</div>'
         + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>'
     );
+}
+
+function listAllStreams() {
+    $('#listAll').click(function(){
+        $('.online').show();
+        $('.offline').show();
+    });
+}
+
+function listOnlineStreams() {
+    $('#listOnline').click(function(){
+        $('.offline').hide();
+    });
+}
+
+function listOfflineStreams() {
+    $('#listOffline').click(function () {
+        $('.online').hide();
+    });
 }
 
 function smallDisplayStreamInfo(data) {
@@ -107,8 +128,25 @@ $.when(
         displayStreamInfo(streamData);
     }
 
-}); // End .done function
+}); // Closing tag for .done function
 
-} // End for loop
+} // Closing tag for loop
 
+// Menu Control
+$('#listAll').click(function () {
+    $('.online').show();
+    $('.offline').show();
+});
+
+$('#listOnline').click(function () {
+    $('.online').show();
+    $('.offline').hide();
+});
+
+$('#listOffline').click(function () {
+    $('.online').hide();
+    $('.offline').show();
+});
+
+}) // Closing tag for document.ready
 
