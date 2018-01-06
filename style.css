@@ -43,6 +43,14 @@ float: right;
 .banner .menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-items: end;
+    align-items: center;
+}
+
+.menu > div {
+    color: #5D5457;
+    font-weight: bold;
+    background-color: #FFF;
 }
 
 .grid {
