@@ -50,9 +50,18 @@ img {
     padding-right: 5px;
 }
 .listAll {
-    display: flex;
-    align-items: center;
+
 }
+
+.listOnline {
+
+}
+
+.listOffline {
+
+}
+
+
 
 .grid {
     display: grid;
