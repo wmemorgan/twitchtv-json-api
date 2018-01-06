@@ -28,7 +28,6 @@ img {
 }
 
 .menu {
-    justify-content: flex-end;
     justify-self: right;
     grid-column: 3 / 3;
 }
@@ -39,6 +38,11 @@ img {
 
 .menu > li {
 float: right;
+}
+
+.banner .menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .grid {
