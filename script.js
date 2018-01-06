@@ -132,6 +132,18 @@ $.when(
 
 } // Closing tag for loop
 
+// $('#listOnline').hide();
+// $('#listOffline').hide();
+
+$('listOnlineIcon').hover(function (){ 
+    $('#listOnline').show(); 
+});
+
+$('listOfflineIcon').hover(function (){
+    $('#listOffline').hide();
+});
+
+
 // Menu Control
 $('#listAll').click(function () {
     $('.online').show();
