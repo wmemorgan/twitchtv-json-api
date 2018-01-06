@@ -43,7 +43,7 @@ float: right;
 
 .grid {
     display: grid;
-    grid-template-columns: 70px auto auto;
+    grid-template-columns: 100px auto auto;
     padding: 10px 0px 10px 0px;
 }
 
