@@ -135,27 +135,43 @@ $.when(
 // $('#listOnline').hide();
 // $('#listOffline').hide();
 
-$('listOnlineIcon').hover(function (){ 
-    $('#listOnline').show(); 
-});
+$('#listAll').hover(function () {
+    $(this).html('ALL ITEMS');
+}, function() {
+    $(this).html('ALL');
+}
+);
 
-$('listOfflineIcon').hover(function (){
-    $('#listOffline').hide();
-});
+$('#listOnline').hover(function() {
+    $(this).html('ONLINE');
+}, function() {
+    $(this).html('ON');
+}
+);
+
+$('#listOffline').hover(function () {
+    $(this).html('OFFLINE');
+}, function () {
+    $(this).html('OFF');
+}
+);
 
 
 // Menu Control
 $('#listAll').click(function () {
+    $(this).html('ALL ITEMS');
     $('.online').show();
     $('.offline').show();
 });
 
 $('#listOnline').click(function () {
+    $(this).html('ONLINE');
     $('.online').show();
     $('.offline').hide();
 });
 
 $('#listOffline').click(function () {
+    $(this).html('OFFLINE');
     $('.online').hide();
     $('.offline').show();
 });
