@@ -65,36 +65,36 @@ function listOfflineStreams() {
     });
 }
 
-function smallDisplayStreamInfo(data) {
-    var logo = data["stream"]["channel"]["logo"];
-    var display_name = data["stream"]["channel"]["display_name"];
-    var game = data["stream"]["channel"]["game"];
-    var preview = data["stream"]["channel"]["status"];
-    var channel_url = data["stream"]["channel"]["url"];
-    // Display stream data
-    $('.grid').append('<div class="logo online">' + '<img src="' + logo + '">' + '</div>'
-        + '<div class="display_name online">'
-        + '<a href="' + channel_url + '" target="_blank">'
-        + display_name + '</a>' + '<br>' + game + '</div>'
-        // + '<div class="status online">' + game + '<div class="preview">' + ': ' + preview + '</div>' + '</div>'
-    );
+// function smallDisplayStreamInfo(data) {
+//     var logo = data["stream"]["channel"]["logo"];
+//     var display_name = data["stream"]["channel"]["display_name"];
+//     var game = data["stream"]["channel"]["game"];
+//     var preview = data["stream"]["channel"]["status"];
+//     var channel_url = data["stream"]["channel"]["url"];
+//     // Display stream data
+//     $('.grid').append('<div class="logo online">' + '<img src="' + logo + '">' + '</div>'
+//         + '<div class="display_name online">'
+//         + '<a href="' + channel_url + '" target="_blank">'
+//         + display_name + '</a>' + '<br>' + game + '</div>'
+//         // + '<div class="status online">' + game + '<div class="preview">' + ': ' + preview + '</div>' + '</div>'
+//     );
 
-}
+// }
 
-function smallDisplayChannelInfo(data) {
-    var logo = data["logo"];
-    var display_name = data["display_name"];
-    var game = data["game"];
-    var preview = data["status"];
-    var channel_url = data["url"];
-    // Display channel data
-    $('.grid').append('<div class="logo offline">' + '<img src="' + logo + '" height="50" width="50">' + '</div>'
-        + '<div class="display_name offline">'
-        + '<a href="' + channel_url + '" target="_blank">'
-        + display_name + '</a>' + '<br>' + '<h4>Offline</h4>' + '</div>'
-        // + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>'
-    );
-}
+// function smallDisplayChannelInfo(data) {
+//     var logo = data["logo"];
+//     var display_name = data["display_name"];
+//     var game = data["game"];
+//     var preview = data["status"];
+//     var channel_url = data["url"];
+//     // Display channel data
+//     $('.grid').append('<div class="logo offline">' + '<img src="' + logo + '" height="50" width="50">' + '</div>'
+//         + '<div class="display_name offline">'
+//         + '<a href="' + channel_url + '" target="_blank">'
+//         + display_name + '</a>' + '<br>' + '<h4>Offline</h4>' + '</div>'
+//         // + '<div class="status offline">' + '<h4>Offline</h4>' + '</div>'
+//     );
+// }
 
 
 
@@ -132,48 +132,62 @@ $.when(
 
 } // Closing tag for loop
 
-// $('#listOnline').hide();
-// $('#listOffline').hide();
+// $('#listAll').html('<i class="fa fa-circle"></i>' + ' ' + 'ALL').addClass("wide");
 
-$('#listAll').hover(function () {
-    $(this).html('ALL ITEMS');
-}, function() {
-    $(this).html('ALL');
-}
-);
 
-$('#listOnline').hover(function() {
-    $(this).html('ONLINE');
-}, function() {
-    $(this).html('ON');
-}
-);
+// $('#listAll').hover(function () {
+//     origHTML = $(this).children().detach();
+//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'ALL');
+// }, function() {
+//     $(this).html(origHTML);
+// });
 
-$('#listOffline').hover(function () {
-    $(this).html('OFFLINE');
-}, function () {
-    $(this).html('OFF');
-}
-);
+// $('#listOnline').hover(function() {
+//     origHTML = $(this).children().detach();
+//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'ONLINE');
+// }, function() {
+//     $(this).html(origHTML);
+// });
 
+// $('#listOffline').hover(function () {
+//     origHTML = $(this).children().detach();
+//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'OFFLINE');
+// }, function () {
+//     $(this).html(origHTML);
+// });
 
 // Menu Control
 $('#listAll').click(function () {
-    $(this).html('ALL ITEMS');
+    $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ALL').addClass("wide");
+    $('#listOnline').html('<i class="fa fa-circle"></i>').removeClass("wide");
+    $('#listOffline').html('<i class="fa fa-circle"></i>').removeClass("wide");
     $('.online').show();
     $('.offline').show();
+    $('#listAll').mouseout(function () {
+        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ALL');
+    });
 });
 
 $('#listOnline').click(function () {
-    $(this).html('ONLINE');
+    $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ONLINE').addClass("wide");
+    $('#listAll').html('<i class="fa fa-circle"></i>').removeClass("wide").addClass("narrow");
+    $('#listOffline').html('<i class="fa fa-circle"></i>').removeClass("wide");
     $('.online').show();
     $('.offline').hide();
+    $('#listOnline').mouseout(function () {
+        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ONLINE').addClass("wide");
+    });
 });
 
 $('#listOffline').click(function () {
-    $(this).html('OFFLINE');
+    $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'OFFLINE').addClass("wide");
+    $('#listAll').html('<i class="fa fa-circle"></i>').removeClass("wide");
+    $('#listOnline').html('<i class="fa fa-circle"></i>').removeClass("wide");
     $('.online').hide();
     $('.offline').show();
+    $('#listOffline').mouseout(function () {
+        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'OFFLINE');
+    });
 });
 
 }) // Closing tag for document.ready

@@ -17,7 +17,7 @@ img {
 
 .banner {
     display: grid;
-    grid-template-columns: auto auto 100px;
+    grid-template-columns: auto auto auto;
     padding: 10px 0px 10px 0px;
 }
 
@@ -48,20 +48,41 @@ img {
     /* width: 50px; */
     text-align: right;
     padding-right: 5px;
+    white-space: nowrap;
 }
+
+.menu > span {
+    float: right;
+    text-align: end;
+}
+
 #listAll > .fa-circle {
     color: #5D5457;
+    float: left;
 }
 
 #listOnline  > .fa-circle  {
     color: #b8ccb1;
+    float: left;
 }
 
 #listOffline  > .fa-circle  {
     color: #506382;
+    float: left;
 }
 
+#listAll:hover, #listOnline:hover, #listOffline:hover {
+    width: 75px;
+}
 
+.wide {
+    width: 75px;
+}
+
+.narrow {
+    width: 15px;
+    overflow: hidden; 
+}
 
 .grid {
     display: grid;
