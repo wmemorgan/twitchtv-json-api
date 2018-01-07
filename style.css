@@ -49,16 +49,16 @@ img {
     text-align: right;
     padding-right: 5px;
 }
-.listAll {
-
+#listAll > .fa-circle {
+    color: #5D5457;
 }
 
-.listOnline {
-
+#listOnline  > .fa-circle  {
+    color: #b8ccb1;
 }
 
-.listOffline {
-
+#listOffline  > .fa-circle  {
+    color: #506382;
 }
 
 
