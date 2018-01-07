@@ -51,27 +51,26 @@ img {
     white-space: nowrap;
 }
 
-.menu > span {
-    float: right;
-    text-align: end;
-}
-
 #listAll > .fa-circle {
     color: #5D5457;
     float: left;
+    padding: 3px;
 }
 
 #listOnline  > .fa-circle  {
     color: #b8ccb1;
     float: left;
+    padding: 3px;
 }
 
 #listOffline  > .fa-circle  {
     color: #506382;
     float: left;
+    padding: 3px;
 }
 
 #listAll:hover, #listOnline:hover, #listOffline:hover {
+    transition: 0.6s ease;
     width: 75px;
 }
 
