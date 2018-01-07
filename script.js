@@ -132,62 +132,29 @@ $.when(
 
 } // Closing tag for loop
 
-// $('#listAll').html('<i class="fa fa-circle"></i>' + ' ' + 'ALL').addClass("wide");
-
-
-// $('#listAll').hover(function () {
-//     origHTML = $(this).children().detach();
-//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'ALL');
-// }, function() {
-//     $(this).html(origHTML);
-// });
-
-// $('#listOnline').hover(function() {
-//     origHTML = $(this).children().detach();
-//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'ONLINE');
-// }, function() {
-//     $(this).html(origHTML);
-// });
-
-// $('#listOffline').hover(function () {
-//     origHTML = $(this).children().detach();
-//     $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'OFFLINE');
-// }, function () {
-//     $(this).html(origHTML);
-// });
-
 // Menu Control
 $('#listAll').click(function () {
-    $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ALL').addClass("wide");
-    $('#listOnline').html('<i class="fa fa-circle"></i>').removeClass("wide");
-    $('#listOffline').html('<i class="fa fa-circle"></i>').removeClass("wide");
+    $(this).removeClass('narrow').addClass('wide');
+    $('#listOnline').removeClass('wide').addClass('narrow');
+    $('#listOffline').removeClass('wide').addClass('narrow');
     $('.online').show();
     $('.offline').show();
-    $('#listAll').mouseout(function () {
-        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ALL');
-    });
 });
 
 $('#listOnline').click(function () {
-    $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ONLINE').addClass("wide");
-    $('#listAll').html('<i class="fa fa-circle"></i>').removeClass("wide").addClass("narrow");
-    $('#listOffline').html('<i class="fa fa-circle"></i>').removeClass("wide");
+    $(this).removeClass('narrow').addClass('wide');
+    $('#listAll').removeClass('wide').addClass('narrow');
+    $('#listOffline').removeClass('wide').addClass('narrow');
     $('.online').show();
     $('.offline').hide();
-    $('#listOnline').mouseout(function () {
-        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'ONLINE').addClass("wide");
-    });
 });
 
 $('#listOffline').click(function () {
-    $(this).html('<i class="fa fa-circle"></i>' + ' ' + 'OFFLINE').addClass("wide");
-    $('#listAll').html('<i class="fa fa-circle"></i>').removeClass("wide");
-    $('#listOnline').html('<i class="fa fa-circle"></i>').removeClass("wide");
+    $(this).removeClass('narrow').addClass('wide');
+    $('#listAll').removeClass('wide').addClass('narrow');
+    $('#listOnline').removeClass('wide').addClass('narrow');
     $('.online').hide();
     $('.offline').show();
-    $('#listOffline').mouseout(function () {
-        $(this).html('<i class="fa fa-circle"></i>' + '&nbsp&nbsp' + 'OFFLINE');
-    });
 });
 
 }) // Closing tag for document.ready
