@@ -49,6 +49,7 @@ img {
     text-align: right;
     padding-right: 5px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 #listAll > .fa-circle {
